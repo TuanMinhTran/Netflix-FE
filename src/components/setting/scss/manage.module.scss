@@ -1,0 +1,702 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+  font-family: "Netflix Sans", Helvetica Neue, Segoe UI, Roboto, Ubuntu,
+    sans-serif;
+}
+
+::placeholder {
+  color: #ccc !important;
+}
+
+.hide-profile {
+  display: none;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.box-profile {
+  animation: fadeIn 0.4s ease-in;
+}
+
+.main-boxAddProfile,
+.main-box-profile {
+  background-color: #141414;
+  color: grey;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.box-profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title-profile {
+  font-size: 3.5vw;
+  color: #fff;
+}
+
+.choose-profile {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile {
+  margin: 2.5vw 2vw 3vw 0;
+}
+
+.profile-avatar {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-name {
+  color: grey;
+  display: block;
+  font-size: 1.3vw;
+  line-height: 1.2em;
+  margin: 0.6em 0;
+  min-height: 1.8em;
+  overflow: hidden;
+  text-align: center;
+  text-overflow: ellipsis;
+}
+
+.profile-link {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-link:hover {
+  cursor: pointer;
+  .profile-avatar {
+    .detail-avatar {
+      .edit-profile {
+        border: 3px solid grey;
+        border-radius: 5px;
+      }
+    }
+  }
+  .profile-name {
+    color: #fff;
+  }
+}
+
+.detail-avatar {
+  position: relative;
+  box-sizing: border-box;
+  max-width: 155px;
+  max-height: 155px;
+  min-width: 84px;
+  min-height: 84px;
+
+  img {
+    border-radius: 3px;
+    background-color: #141414;
+    opacity: 0.5;
+  }
+}
+
+.choose-profile-browse {
+  img {
+    opacity: unset;
+  }
+}
+
+.edit-profile {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 32px;
+}
+
+.btn-profile {
+  background: #fff;
+  border: 1px solid #fff;
+  color: #000;
+  font-size: 1.2vw;
+  font-weight: 700;
+  padding: 0.5em 1.5em;
+  cursor: pointer;
+
+  &:hover {
+    background: #c00;
+    color: #fff;
+    border: 1px solid #c00;
+  }
+}
+
+.btn-chooseProfile-browse {
+  background: transparent;
+  border: 1px solid #666;
+  color: #666;
+
+  &:hover {
+    border: 1px solid #fff;
+    color: #fff;
+    background: transparent;
+  }
+}
+
+.add-profile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-height: 200px;
+  max-width: 200px;
+  height: 10vw;
+  width: 10vw;
+  min-height: 84px;
+  min-width: 84px;
+  color: grey;
+  font-size: 5vw;
+  text-align: center;
+}
+
+.profile-link:hover {
+  cursor: pointer;
+  .profile-avatar {
+    .detail-avatar {
+      .add-profile {
+        background-color: #e5e5e5;
+        border-radius: 5px;
+      }
+    }
+  }
+  .profile-name {
+    color: #fff;
+  }
+}
+
+// CSS box add Profile
+.box-addProfile {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  animation: fadeIn 0.4s ease-in;
+}
+
+.title-addProfile {
+  color: #fff;
+  font-size: 4vw;
+  font-weight: 400;
+}
+
+.slogan-addProfile {
+  font-size: 1.3vw;
+  color: #666;
+  margin: 12px 0;
+  font-weight: 400;
+}
+
+.profile-metadata {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid #666;
+  border-bottom: 1px solid #666;
+  animation: fadeIn 0.4s ease-in;
+  padding: 25px 0;
+}
+
+.profile-addAvatar {
+  max-width: 130px;
+  min-width: 130px;
+  max-height: 130px;
+  min-height: 130px;
+  animation: fadeIn 0.4s ease-in;
+  margin-right: 1.8vw;
+}
+
+.profile-inputName input[type="text"] {
+  background: #666;
+  border: 1px solid transparent;
+  box-sizing: border-box;
+  color: #fff;
+  font-size: 1.3vw;
+  font-weight: 600;
+  height: 2em;
+  margin: 0 0.8em 0 0;
+  padding: 0.2em 0.6em;
+  text-indent: 0.1vw;
+  animation: fadeIn 0.4s ease-in;
+  width: 18em;
+}
+
+.profile-inputName input:focus {
+  outline: none;
+}
+
+.profile-check {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  input {
+    display: none;
+  }
+  label {
+    position: relative;
+    border: 1px solid #333;
+    border-radius: 0;
+    display: inline-block;
+    font-size: 0.8vw;
+    height: 2.5em;
+    width: 2.5em;
+    margin-right: 0.5em;
+  }
+  .checkedChildren::before {
+    content: "";
+    display: inline-block;
+    background-color: rgb(128, 128, 128);
+    color: #fff;
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    left: 16.3333%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.profile-kids-tooltip {
+  display: none;
+  background: #fff;
+  position: absolute;
+  width: 300px;
+  text-align: center;
+  bottom: 50px;
+  padding: 10px;
+  font-size: 0.8vw;
+  color: #000;
+  font-weight: 500;
+  animation: fadeIn 0.5s ease-in;
+}
+
+.profile-kids-tooltip::after {
+  content: "";
+  position: absolute;
+  background-color: #fff;
+  width: 16px;
+  height: 16px;
+  bottom: -7px;
+  left: 50%;
+  transform: rotate(45deg);
+}
+
+.profile-check:hover .profile-kids-tooltip {
+  display: block;
+}
+
+.btn-addProfile {
+  display: flex;
+  flex-direction: row;
+  animation: fadeIn 0.4s ease-in;
+  .btn-nextAddProfile {
+    background: #fff;
+    border: 1px solid #fff;
+    color: #000;
+    font-size: 1.2vw;
+    font-weight: 700;
+    padding: 0.4em 1.5em;
+    cursor: pointer;
+    margin: 30px 20px 0 0;
+  }
+
+  .btn-nextAddProfile:hover {
+    background-color: #c00;
+    border: 1px solid #c00;
+    color: #fff;
+  }
+
+  .btn-cancelAddProfile {
+    background: transparent;
+    border: 1px solid #666;
+    color: #666;
+    font-size: 1.2vw;
+    font-weight: 500;
+    margin: 30px 20px 0 0;
+    padding: 0.4em 1.5em;
+    cursor: pointer;
+  }
+
+  .btn-cancelAddProfile:hover {
+    border: 1px solid #fff;
+    color: #fff;
+  }
+}
+
+// CSS Chỉnh sửa hồ sơ
+.box-childrenEditProfile {
+  margin-top: 200px !important;
+}
+
+.box-mainEditProfile {
+  position: fixed;
+  background-color: #141414;
+  color: grey;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  animation: transition 0.4s ease-in-out;
+
+  .box-actionEditProfile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 400px;
+
+    h1.title-editProfile {
+      color: #fff;
+      font-size: 3.5vw;
+      animation: fadeIn 0.4s ease-in;
+      font-weight: 500;
+    }
+
+    .content-editProfile {
+      max-width: 650px;
+      border-top: 1px solid #333;
+      border-bottom: 1px solid #333;
+      padding: 25px 0px;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      animation: fadeIn 0.4s ease-in;
+      align-items: flex-start;
+
+      .img-editProfile {
+        max-width: 130px;
+        max-height: 130px;
+        min-width: 84px;
+        min-height: 84px;
+        position: relative;
+
+        .position-imgEdit {
+          border-radius: 5px;
+        }
+
+        .actionEditAvatar-editProfile {
+          position: absolute;
+          bottom: 15px;
+          left: 15px;
+          color: #fff;
+          font-size: 24px;
+          background: #000;
+          border-radius: 50%;
+          box-shadow: 0 0 10px 2px #000;
+          cursor: pointer;
+        }
+      }
+
+      .profile-editParent {
+        margin-left: 25px;
+
+        .input-editProfile {
+          .name-editProfile {
+            background: #666;
+            border: 1px solid transparent;
+            box-sizing: border-box;
+            color: #fff;
+            font-size: 1.3vw;
+            height: 2em;
+            margin: 0 0.8em 0 0;
+            padding: 0.2em 0.6em;
+            text-indent: 0.1vw;
+            width: 100%;
+          }
+
+          .name-editProfile:focus {
+            outline: none;
+          }
+
+          p.checkName-editProfile {
+            color: #ea3841;
+          }
+        }
+
+        .dropdown-editProfile {
+          margin-top: 1rem;
+
+          .select-langue {
+            background-color: #000;
+            border: 1px solid #fff;
+            color: #fff;
+            font-weight: 500;
+            padding: 3px 10px;
+            margin-bottom: 5px;
+            cursor: pointer;
+          }
+          select.select-langue:hover {
+            background: #333;
+          }
+        }
+
+        .nickname-editProfile {
+          position: relative;
+          margin-bottom: 20px;
+
+          h2.title-editProfile {
+            padding: 15px 0px;
+          }
+
+          .content-nickname {
+            color: #fff;
+            line-height: 1.2;
+            text-align: justify;
+            font-size: 1vw;
+          }
+
+          .findOutMore-editProfile {
+            position: absolute;
+            color: #fff;
+            font-weight: 500;
+            width: 100%;
+            display: flex;
+          }
+
+          .createNickName-editProfile {
+            margin-top: 40px;
+            .createNickNameInput {
+              background: #666;
+              border: 1px solid transparent;
+              box-sizing: border-box;
+              color: #fff;
+              font-size: 1.3vw;
+              height: 2em;
+              margin: 0 0.8em 0 0;
+              padding: 0.2em 0.6em;
+              text-indent: 0.1vw;
+              width: 100%;
+            }
+
+            .createNickNameInput:focus {
+              outline: none;
+            }
+
+            .checkCreateNickName {
+              display: flex;
+              flex-direction: row;
+              justify-content: space-between;
+              
+
+              .checkTool {
+                .warning-icon {
+                  margin-left: 5px;
+                }
+              }
+
+              .checkCharacters {
+                flex-grow: 1;
+                text-align: right;
+                color: #fff;
+              }
+            }
+            .checkInput-editProfile {
+              border: 1px solid #ea3841;
+            }
+          }
+        }
+
+        .settingAge-editProfile {
+          border-top: 1px solid #333;
+
+          h2.title-editProfile {
+            padding: 15px 0px;
+          }
+          .allAge {
+            color: #fff;
+            font-weight: 500;
+            background: #333;
+            padding: 5px 10px;
+            margin-right: 5px;
+            cursor: default;
+          }
+          .ageChildren {
+            color: #fff;
+            font-weight: 500;
+            background: #333;
+            padding: 5px 10px;
+            cursor: default;
+          }
+          .display {
+            color: #fff;
+            padding: 10px 0px;
+          }
+          .btn-settingEditAge {
+            background: transparent;
+            color: grey;
+            border: 1px solid grey;
+            padding: 5px 20px;
+            margin: 20px 0px 30px;
+          }
+          .btn-settingEditAge:hover {
+            color: #fff;
+            border: 1px solid #fff;
+          }
+        }
+
+        .autoPlay-editProfile {
+          border-top: 1px solid #333;
+
+          h2.title-editProfile {
+            padding: 15px 0px;
+          }
+          .marker-next {
+            position: relative;
+            display: flex;
+            align-items: center;
+
+            .marker-checkAuto-next {
+              position: absolute;
+              border: 1px solid #333;
+              width: 30px;
+              height: 30px;
+            }
+            .checkedNext::before {
+              content: "";
+              font-weight: 500;
+              display: inline-block;
+              background-color: rgb(128, 128, 128);
+              color: #fff;
+              width: 15px;
+              height: 15px;
+              position: absolute;
+              left: 50%;
+              top: 50%;
+              transform: translate(-50%, -50%);
+            }
+
+            .content-autoPlay-next {
+              font-size: 14px;
+              color: #fff;
+              text-indent: 40px;
+              display: flex;
+              align-items: center;
+              height: 40px;
+            }
+          }
+
+          .marker-preview {
+            position: relative;
+            display: flex;
+            align-items: center;
+
+            .checkedPreview::before {
+              content: "";
+              display: inline-block;
+              background-color: rgb(128, 128, 128);
+              color: #fff;
+              width: 15px;
+              height: 15px;
+              position: absolute;
+              left: 50%;
+              top: 50%;
+              transform: translate(-50%, -50%);
+            }
+
+            .marker-checkAuto-preview {
+              position: absolute;
+              border: 1px solid #333;
+              width: 30px;
+              height: 30px;
+            }
+            .content-autoPlay-preview {
+              font-size: 14px;
+              color: #fff;
+              margin-left: 40px;
+            }
+          }
+        }
+      }
+    }
+
+    .btn-editUpdate {
+      animation: fadeIn 0.4s ease-in;
+      margin: 50px 0px 30px;
+
+      .btn-saveEditProfile {
+        background-color: #fff;
+        border: 1px solid #fff;
+        color: #000;
+        padding: 7px 25px;
+        font-weight: 600;
+        font-size: 1.2vw;
+        margin-right: 20px;
+      }
+      .btn-saveEditProfile:hover {
+        background: #c00;
+        border: 1px solid #c00;
+        color: #fff;
+        cursor: pointer;
+      }
+
+      .btn-cancelEditProfile,
+      .btn-deleteEditProfile {
+        background-color: transparent;
+        border: 1px solid grey;
+        color: grey;
+        padding: 7px 25px;
+        font-weight: 600;
+        font-size: 1.2vw;
+        margin-right: 20px;
+      }
+      .btn-cancelEditProfile:hover,
+      .btn-deleteEditProfile:hover {
+        border: 1px solid #fff;
+        color: #fff;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+h2.title-editProfile {
+  font-size: 1.3vw;
+  color: #ccc;
+  padding: 10px 0 5px;
+}

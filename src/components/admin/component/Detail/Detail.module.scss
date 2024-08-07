@@ -1,0 +1,49 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    max-width: 1200px;
+    margin: auto;
+    margin-top: 50px;
+}
+.item {
+    display: flex;
+    font-size: 20px;
+    line-height: 30px;
+    margin-bottom: 10px;
+    a {
+        color: aqua;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+    input {
+        margin-left: 30px;
+        border: 1px solid #ccc;
+        flex: 1;
+    }
+}
+.btn-container {
+    display: flex;
+    justify-content: flex-end;
+}
+.btn {
+    margin-left: 20px;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    padding: 5px;
+    font-weight: 500;
+    color: #fff;
+}
+.btn.delete {
+    background-color: red;
+    &:hover {
+        background-color: rgba(255, 0, 0, 0.63);
+
+    }
+}
+.btn.edit {
+    background-color: blue;
+    &:hover {
+        background-color: rgba(0, 0, 255, 0.726);
+        }
+}

@@ -1,0 +1,269 @@
+@keyframes fadeIn {
+  from {
+    transform: scale(1.2);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.box-mainAvatar {
+  position: fixed;
+  color: #fff;
+  background: #141414;
+  height: 100%;
+  animation: fadeIn 0.4s ease-in-out;
+
+  .box-avatar {
+    position: fixed;
+
+    .header-container {
+      position: fixed;
+      background: #141414;
+      height: 155px;
+      width: 100%;
+    }
+    .header-bg {
+      position: fixed;
+      background-image: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.7) 10%,
+        transparent
+      );
+      height: 80px;
+      width: 100%;
+    }
+    .header-nav {
+      position: fixed;
+      background: hsla(0, 0%, 8%, 0.9);
+      top: 7vw;
+      z-index: 99;
+      display: flex;
+      justify-content: space-between;
+      left: 0;
+      right: 0;
+      margin: 0 auto 1vw;
+      padding: 0 4vw 1vw 0;
+      max-width: 93vw;
+      width: 100%;
+
+      .title {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+
+        .icon {
+          font-size: 2.7vw;
+          cursor: pointer;
+        }
+        .title-editProfileAvatar {
+          margin-left: 30px;
+          line-height: 1.2;
+          h1 {
+            font-size: 37.5px;
+            font-weight: 500;
+          }
+          h2 {
+            font-size: 30px;
+            font-weight: 500;
+          }
+        }
+      }
+
+      .avatar {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+
+        .username {
+          color: #fff;
+          font-size: 30px;
+        }
+        .avatar-username {
+          img {
+            border-radius: 4px;
+            height: 6vw;
+            margin-left: 20px;
+            max-height: 90px;
+            max-width: 90px;
+            min-height: 40px;
+            min-width: 40px;
+            width: 6vw;
+          }
+        }
+      }
+    }
+    .wrapper-list-avatars {
+      .box-avatar-container {
+        position: fixed;
+        background: #141414;
+        top: 10vw;
+        height: calc(100% - 152px);
+        overflow-y: scroll;
+        min-height: 500px;
+        width: 100%;
+
+        .list-avatars-themed {
+          margin-top: 80px;
+          list-style: none;
+          max-height: 100%;
+          padding: 0;
+          width: 100%;
+
+          .detail-list-avatars-themed {
+            padding-bottom: 50px;
+
+            h2 {
+              font-size: 2.4vw;
+              margin: 0 auto 1vw;
+              max-width: 1310px;
+              padding: 0;
+              text-align: left;
+              width: 87%;
+              font-weight: 500;
+            }
+            .list-slider-avatars:hover .handle-slide svg {
+              display: block;
+            }
+
+            .list-slider-avatars {
+              position: relative;
+              margin: 0 auto;
+              max-width: 1437px;
+              overflow: hidden;
+              width: 88vw;
+              height: 150px;
+
+              .handle-slide {
+                position: absolute;
+                width: 60px;
+                color: #fff;
+                display: flex;
+                justify-content: center;
+                bottom: 0;
+                top: 0;
+                text-align: center;
+                height: 100%;
+                font-size: 1.7vw;
+                cursor: pointer;
+
+                svg {
+                  align-self: center;
+                  display: none;
+                  transition: 0.2s ease-in-out;
+                }
+                &:hover {
+                  font-size: 36px;
+                }
+              }
+
+              .icon-left {
+                position: absolute;
+                left: -2px;
+                background: linear-gradient(
+                  90deg,
+                  #141414 0,
+                  hsla(0, 0%, 8%, 0.4)
+                );
+                z-index: 9;
+                border-top-right-radius: 6px;
+                border-bottom-right-radius: 6px;
+
+                &::before {
+                  content: "";
+                  background: #141414;
+                  position: absolute;
+                  left: -60px;
+                  width: 60px;
+                  height: 150px;
+                  cursor: default;
+                }
+              }
+              .icon-right {
+                position: absolute;
+                right: -2px;
+                background: linear-gradient(
+                  -90deg,
+                  #141414 0,
+                  hsla(0, 0%, 8%, 0.4)
+                );
+                border-top-left-radius: 6px;
+                border-bottom-left-radius: 6px;
+                z-index: 9;
+
+                &::before {
+                  content: "";
+                  background: #141414;
+                  position: absolute;
+                  right: -60px;
+                  width: 60px;
+                  height: 150px;
+                  cursor: default;
+                }
+              }
+              .slider-avatarsEdit {
+                overflow-x: visible;
+                width: 100%;
+                height: 150px;
+
+                .slider-img-avatars {
+                  width: 100%;
+                  height: 150px;
+
+                  .slick-slider {
+                    width: 100%;
+                    height: 100%;
+                    white-space: nowrap;
+
+                    button {
+                      display: none !important;
+                    }
+
+                    wh.slick-list {
+                      .slick-track {
+                        width: 100% !important;
+                        height: 150px !important;
+                        padding: 2px 0px;
+                      }
+                    }
+                    .slick-slide {
+                      width: 150px !important;
+                      height: 150px !important;
+                      margin: 0 10px;
+                      justify-content: center;
+                      align-items: center;
+                      display: flex;
+                    }
+                  }
+
+                  .slide-item {
+                    box-sizing: border-box;
+                    display: inline-block;
+                    vertical-align: top;
+                    white-space: normal;
+
+                    .slide-pick {
+                      img {
+                        width: 145px;
+                        border-radius: 5px;
+                        cursor: pointer;
+
+                        &:hover {
+                          box-shadow: 0 0 0 2px #fff;
+                          border-radius: 5px;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

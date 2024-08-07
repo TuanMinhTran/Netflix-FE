@@ -1,0 +1,29 @@
+.header {
+  position: fixed;
+  background-color: #141414;
+  height: 80px;
+  width: 99.222%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  z-index: 5;
+}
+
+.header.visible {
+  opacity: 1;
+  animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+.header.hidden {
+  opacity: 0;
+  animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,356 @@
+$main-color: red;
+$transeffect: rgba(0, 0, 0, 0.5);
+$text-color: white;
+$bd-radius: 5px;
+
+@mixin bw-original {
+  background-color: black;
+  color: $text-color;
+}
+
+@mixin button-style {
+  border: 0;
+  outline: 0;
+  background-color: $main-color;
+  color: $text-color;
+  padding: 10px 20px;
+  margin: 5px;
+  font-size: 16px;
+  border-radius: $bd-radius;
+  cursor: pointer;
+}
+
+@mixin button-hover {
+  background-color: $main-color;
+  transition-duration: 300;
+  size: 25px;
+}
+
+.banner {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url(./../../assets/images/introduction/bgimg.jpg);
+  background-size: cover;
+  background-position: 50% 50%;
+  padding: 10px 8px;
+  position: relative;
+  height: 100vh;
+  width: 100%;
+}
+.logo {
+  width: 150px;
+  cursor: pointer;
+}
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .login-button {
+    @include button-hover();
+    @include button-style();
+  }
+  select {
+    background-color: $transeffect;
+    color: $text-color;
+    border: 1px white;
+    padding: 10px;
+    border-radius: $bd-radius;
+  }
+}
+.header-content {
+  position: absolute;
+  top: 40%;
+  align-items: center;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin-top: 50px;
+  text-align: center;
+  color: $text-color;
+  h1 {
+    font-size: 50px;
+    line-height: 70px;
+    font-weight: 800;
+    margin-bottom: 20px;
+  }
+  h3 {
+    font-size: 30px;
+    font-weight: 400;
+    margin-bottom: 10px;
+  }
+  h4 {
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 10px;
+  }
+  .email-signup {
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+    overflow: hidden;
+    input {
+      flex: 1;
+      background: $transeffect;
+      border-radius: $bd-radius;
+      padding: 10px 20px;
+      border: 1px solid;
+      margin-left: 20px;
+    }
+    button {
+      @include button-style();
+      @include button-hover();
+    }
+  }
+}
+
+/*-----------Features-------------------*/
+.features {
+  @include bw-original;
+  padding: 50px 10%;
+  font-size: 20px;
+}
+.row {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 50px 0;
+}
+.text-col {
+  h2 {
+    font-size: 50px;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+  flex-basis: 50%;
+  margin-bottom: 20px;
+}
+
+.img-col {
+  flex-basis: 50%;
+  margin-bottom: 20px;
+  img {
+    display: block;
+    width: 90%;
+    margin: auto;
+  }
+}
+/*--------FAQ Questions-----------------*/
+.faq {
+  @include bw-original;
+  padding: 10px 10%;
+  font-size: 20px;
+  h2 {
+    font-size: 50px;
+    font-weight: 600;
+    text-align: center;
+  }
+}
+.accordion {
+  text-align: left;
+  margin: 60px auto;
+  width: 100%;
+  max-width: 750px;
+  li {
+    list-style: none;
+    width: 100%;
+    padding: 5px;
+
+    .accordion-menu {
+      display: flex;
+      align-items: center;
+      padding: 20px;
+      font-size: 20px;
+      font-weight: 500;
+      background: #303030;
+      margin-bottom: 2px;
+      cursor: pointer;
+      position: relative;
+    }
+  }
+}
+
+.accordion-menu::after {
+  content: "+";
+  font-size: 30px;
+  position: absolute;
+  right: 20px;
+}
+input[type="radio"] {
+  display: none;
+}
+
+.accordion .content {
+  background: #303030;
+  text-align: left;
+  padding: 0 20px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s, padding 0.5s;
+}
+
+.accordion input[type="radio"]:checked + .accordion-menu + .content {
+  max-height: 600px;
+  padding: 30px 20px;
+}
+.accordion input[type="radio"]:checked + .accordion-menu::after {
+  transform: rotate(135deg);
+}
+.footer-content {
+  h4 {
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  .email-signup {
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+    max-width: 600px;
+    margin: 20px auto 60px;
+
+    input {
+      flex: 1;
+      background: $transeffect;
+      border-radius: $bd-radius;
+      padding: 10px 20px;
+      border: 1px solid 0.5px;
+      margin-left: 20px;
+    }
+    button {
+      @include button-style();
+      @include button-hover();
+    }
+  }
+}
+.footer {
+  background-color: black;
+  padding: 50px 15% 10px;
+  border-top: 6px solid #333;
+  color: #777;
+  h2 {
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 10px;
+    margin-bottom: 10px;
+  }
+  .row {
+    display: inline-flex;
+    flex-basis: 25%;
+    flex-grow: 0;
+
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    .col {
+      flex-grow: 1;
+      margin-bottom: 20px;
+      display: block;
+      color: #777;
+      font-size: 15px;
+      margin-bottom: 10px;
+      padding-left: 5px;
+    }
+  }
+  select {
+    background-color: black;
+    border: 2px solid #777;
+    padding: 10px;
+    border-radius: $bd-radius;
+  }
+  .copyright-txt {
+    font-size: 15px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+}
+// ------media-queries-for-smscreen---//
+@media only screen and (max-width: 600px) {
+  .logo {
+    width: 100px;
+  }
+  nav button,
+  nav select {
+    padding: 5px 10px;
+  }
+  .header-content {
+    position: unset;
+    width: inherit;
+    height: inherit;
+    transform: none;
+    height: 80%;
+    width: auto;
+    padding-top: 10px;
+    h1 {
+      font-size: 30px;
+      line-height: 50px;
+    }
+    h3 {
+      font-size: 20px;
+      font-weight: 400;
+      margin-bottom: 10px;
+    }
+    h4 {
+      font-size: 15px;
+      font-weight: 400;
+      margin-bottom: 10px;
+    }
+  }
+  .email-signup button {
+    font-size: 15px;
+    padding: 10px 15px;
+  }
+
+  .text-col,
+  .img-col {
+    flex-basis: 100%;
+    h2 {
+      font-size: 30px;
+    }
+    p {
+      font-size: 15px;
+    }
+  }
+  .features {
+    h2 {
+      font-size: 30px;
+    }
+    p {
+      font-size: 15px;
+    }
+    .row:nth-child(2),
+    .row:nth-child(4) {
+      flex-direction: column-reverse;
+    }
+    .row {
+      padding: 10px 0;
+    }
+  }
+  .faq {
+    h2 {
+      font-size: 20px;
+      padding-bottom: 0;
+    }
+    .accordion .content {
+      font-size: 15px;
+    }
+    .accordion-menu {
+      padding: 15px;
+      font-size: 16px;
+    }
+    .accordion-menu::after {
+      font-size: 20px;
+    }
+  }
+}
+@media only screen and (max-width: 1170px) {
+  .row {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    flex-basis: 25%;
+    .col {
+      font-size: 10px;
+      margin: 15px;
+    }
+  }
+}

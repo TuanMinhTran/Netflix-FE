@@ -1,0 +1,368 @@
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.box-mainRestrictions {
+  background-color: #f3f3f3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .box-restrictions {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+    .nav-restrictionProfile {
+      background: #141414;
+      height: 70px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 9;
+
+      .max-width {
+        max-width: 1430px;
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+
+        .logo-restrictionProfile {
+          svg {
+            width: 118px;
+            cursor: pointer;
+          }
+        }
+        .avatar-restrictionProfile {
+          position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: row;
+          cursor: pointer;
+          padding: 20px 0px;
+
+          img {
+            width: 32px;
+            border-radius: 6px;
+          }
+          svg {
+            color: #fff;
+            margin-left: 10px;
+          }
+
+          .list-profileRestriction::before {
+            content: "";
+            background: #f3f3f3;
+            width: 18px;
+            height: 18px;
+            position: absolute;
+            top: -8px;
+            left: 43.33333%;
+            transform: rotate(45deg);
+          }
+          .list-profileRestriction::after {
+            content: "";
+            background: #141414;
+            width: 30px;
+            height: 20px;
+            position: absolute;
+            top: 0px;
+            left: 40%;
+          }
+
+          .list-profileRestriction {
+            position: absolute;
+            top: 72px;
+            margin-right: 15px;
+            display: none;
+            animation: fadeIn 0.2s ease-in-out;
+
+            .wrapper-lists {
+              display: block;
+              background: #141414;
+              color: #fff;
+              font-size: 12px;
+              font-weight: 500;
+              width: 155px;
+
+              .list-profileUsers {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+
+                .listItem-profileUser {
+                  display: flex;
+                  flex-direction: row;
+                  justify-content: flex-start;
+                  align-items: center;
+                  width: 100%;
+                  padding: 10px 5px 0 10px;
+                  margin-bottom: 5px;
+                  a {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: flex-start;
+                    align-items: center;
+                    width: 100%;
+
+                    img {
+                      margin-right: 10px;
+                    }
+                  }
+                }
+                .listItem-profileUser:hover {
+                  text-decoration: underline;
+                }
+              }
+
+              .list-profileSettings {
+                margin: 5px;
+
+                .listItem-profileSetting {
+                  padding: 8px 5px;
+                }
+                .listItem-profileSetting:nth-child(2) {
+                  padding: 15px 5px;
+                }
+
+                .listItem-profileSetting:nth-child(3) {
+                  padding-bottom: 15px;
+                }
+
+                .listItem-profileSetting:hover {
+                  text-decoration: underline;
+                }
+              }
+
+              .checkOut-restrictions {
+                text-align: center;
+                border-top: 1px solid #666;
+                padding: 12px;
+
+                &:hover {
+                  text-decoration: underline;
+                }
+              }
+            }
+          }
+        }
+
+        .avatar-restrictionProfile:hover .list-profileRestriction {
+          display: block;
+        }
+      }
+    }
+
+    .content-restrictionProfile {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      max-width: 1024px;
+      width: 100%;
+      margin-top: 20px;
+
+      form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 50px;
+        width: 100%;
+
+        .detail-content-maxWidth {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+
+          .title-avatar {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            margin: 20px 0 10px;
+
+            .title {
+              h1 {
+                color: #333333;
+                font-size: 2.2vw;
+                font-weight: 600;
+              }
+            }
+            .avatar {
+              img {
+                width: 50px;
+                border-radius: 5px;
+              }
+            }
+          }
+
+          .checkPwd {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            width: 100%;
+            margin-top: 20px;
+            position: relative;
+
+            .restriction-password {
+              color: #141414;
+              font-weight: 600;
+              font-size: 1.2vw;
+            }
+            .input-checkPwd {
+              display: flex;
+              flex-direction: row;
+              justify-content: center;
+              align-items: center;
+              margin-top: 20px;
+
+              .input {
+                width: 300px;
+                height: 40px;
+                padding: 10px;
+                border: 1px solid #b3b3b3;
+              }
+              .input:focus {
+                outline: 1px solid #d0d0d0;
+              }
+
+              .forgetPwd {
+                color: #0080ff;
+                text-indent: 15px;
+                font-weight: 500;
+                cursor: pointer;
+              }
+              .forgetPwd:hover {
+                text-decoration: underline;
+              }
+            }
+            .message {
+              position: absolute;
+              bottom: -18px;
+              color: #b00500;
+              font-size: 13px;
+            }
+          }
+
+          .btn-restriction {
+            display: flex;
+            flex-direction: row;
+            margin-top: 70px;
+
+            .next,
+            .cancel {
+              display: inline-block;
+              font-size: 14px;
+              line-height: 1em;
+              margin-right: 0.5em;
+              border-radius: 2px;
+              min-height: 37px;
+              min-width: 98px;
+              padding: 12px 1em;
+              width: auto;
+            }
+            .next {
+              background-image: linear-gradient(180deg, #0080ff, #0277ec);
+              color: #fff;
+              box-shadow: 0 1px 0 rgba(0, 0, 0, 0.55);
+            }
+            .next:hover {
+              background: #2490fd;
+              box-shadow: 0 1px 0 rgba(0, 0, 0, 0.55);
+            }
+            .cancel {
+              background-color: #e6e6e6;
+              background-image: linear-gradient(180deg, #e6e6e6, #ddd);
+              box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+            }
+            .cancel:hover {
+              background: #eaeaea;
+              box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+            }
+          }
+        }
+      }
+    }
+
+    .question-contactUs-restrictionProfile {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-top: 1px solid #e8e8e8;
+      padding-top: 30px;
+      font-size: 1em;
+      margin-top: 160px;
+      color: #757575;
+      width: 100%;
+
+      .max-width {
+        max-width: 1360px;
+        width: 100%;
+
+        .title-question {
+          display: unset;
+        }
+        .title-question:hover {
+          text-decoration: underline;
+          cursor: pointer;
+        }
+        .link-support {
+          margin-top: 30px;
+          box-sizing: border-box;
+          font-size: 13px;
+          max-width: 1000px;
+          li {
+            box-sizing: border-box;
+            display: inline-block;
+            margin-bottom: 16px;
+            min-width: 100px;
+            padding: 0 22px 0 0;
+            vertical-align: top;
+            width: 25%;
+            cursor: pointer;
+          }
+          li:hover {
+            text-decoration: underline;
+          }
+        }
+
+        .code-service {
+          border: 1px solid #757575;
+          color: #757575;
+          display: inline-block;
+          font-size: 0.8521em;
+          min-width: 90px;
+          padding: 6px 20px;
+          text-align: center;
+          cursor: pointer;
+          margin: 40px 0;
+        }
+      }
+    }
+  }
+}

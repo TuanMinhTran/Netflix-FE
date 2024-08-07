@@ -1,0 +1,28 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+
+}
+.header {
+    display: flex;
+    justify-content: space-around;
+    color: #e50914;
+    width: 100%;
+    height: 64px;
+    border-bottom: 1px solid #ccc;
+}
+
+.logo,.log-out {
+    display: flex;
+    margin: auto 0;
+    cursor: pointer;
+}
+
+.log-out {
+    font-size: 22px;
+    font-weight: 600;
+    &:hover {
+        text-decoration: underline;
+        
+    }
+}

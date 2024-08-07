@@ -1,0 +1,311 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 500px;
+    margin: auto;
+}
+.step-img {
+    width: 50px;
+    margin: 20px;
+}
+.header {
+    color: black;
+}
+
+.step-indicator {
+    
+} 
+.step-title {
+    line-height: 40px;
+    font-size: 30px;
+    font-weight: 600;
+    color: black;
+}
+.regContext-first,.context-emphasized {
+    font-size: 18px;
+}
+.context-emphasized {
+    font-weight: 600;
+}
+
+.secure-server-badge {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    font-size: 13px;
+    span:last-child {
+        margin-left: 3px;
+        color: rgb(255, 181, 63);
+    }
+}
+
+.option-payment {
+    width: 100%;
+    margin-bottom: 140px;
+}
+.option {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    padding: 12px;
+    width: 100%;
+    height: 64px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 8px;
+}
+.option-name-logo {
+    display: flex;
+}
+.option-name {
+    margin-right: 8px;
+}
+.option-logo {
+    display: flex;
+    img {
+        margin-right: 8px;
+    }
+}
+.arrow {
+    font-size: 28px;
+}
+
+// css for chose option
+
+.field-container.wrapper {
+    margin-top: 20px 0 40px;
+    text-align: left;
+    align-items: flex-start;
+    max-width: 440px;
+
+}
+
+
+.container-logo {
+    margin: 10px 0;
+    padding: 0;
+}
+.form-field-container,.simple-form {
+    width: 100%;
+}
+.nF-form-space {
+    height: 60px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    margin-bottom: 22px;
+    position: relative;
+}
+
+// 
+.inline {
+    display: flex;
+    justify-content: space-between;
+}
+.nF-form-space.nF-form-space-inline {
+    width: 49%;
+}
+.question-icon {
+    font-size: 22px;
+    position: absolute;
+    top: 50%;
+    right:10px;
+    transform: translateY(-50%);
+    color: #888;
+    cursor: pointer;
+}
+
+
+// 
+.input-form {
+    outline: none;
+    height: 18px;
+    margin: 24px 4% auto;
+    width: 92%;
+
+    &:focus+.input-label {
+        transform: translateY(-100%);
+        font-size: 14px;
+    }
+    &:focus~.card-icon {
+        transform: translateY(0);
+    }
+}
+
+
+.input-label,.card-icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+    pointer-events: none;
+    transition: transform 0.3s, font-size 0.3s;
+}
+.input-label {
+    left: 10px;
+    &.active {
+        transform: translateY(-100%);
+        font-size: 14px;
+    }
+}
+.card-icon {
+    right: 10px;
+}
+
+.order-infor {
+    width: 100%;
+    height: 72px;
+    padding: 0 10px;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 600;
+}
+.order-infor-item {
+
+}
+.option-price {
+
+}
+.option-name {
+    color: rgb(115, 115, 115);
+    font-weight: 500;
+}
+.change-option-button {
+    color: rgb(0, 113, 235);
+    &:hover {
+        text-decoration: underline;
+        cursor: pointer;
+    }
+}
+.reminder {
+    margin: 20px 0;
+}
+.link {
+    color: rgb(0, 113, 235);
+    &:hover {
+            text-decoration: underline;
+            cursor: pointer;
+        }
+}
+.acceptance {
+    font-size: 20px;
+}
+.checkbox {
+    width: 20px;
+    height: 20px;
+    border: 1px solid black;
+    background-color: #ccc;
+    color: black;
+    margin: 5px;
+    padding: 0;
+}
+.btn {
+    color: #fff;
+    background-color: #e50914;
+    width: 100%;
+    max-width: 440px;
+    height: 65px;
+    margin-top: 15px;
+    font-size: 24px;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    padding: auto;
+    text-align: center;
+    margin: 20px auto;
+}
+.sub-header {
+    font-size: 16px;
+    color: rgb(51, 51, 51);
+    margin: 20px 0;
+}
+
+
+// 
+.country-select-container {
+    width: 25%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+
+.select-country {
+    display: flex;
+
+    height: 48px;
+    width: 100%;
+    border: 1px solid #333;
+    margin-bottom: 22px;
+
+}
+
+.country-select-code {
+    margin: 10px;
+}
+.phone-number {
+    flex: 1;
+    height: 48px;
+    border-radius: 1px;
+    position: relative;
+
+}
+
+
+
+.input-phone-number {
+    outline: none;
+        height: 18px;
+        margin-top: 20px;
+        width: 100%;
+    
+        &:focus+.input-phone-label {
+            transform: translateY(-100%);
+            font-size: 14px;
+        }
+}
+.input-phone-label {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+    pointer-events: none;
+    transition: transform 0.3s, font-size 0.3s;
+    left: 10px;
+}
+
+.popup-select-country {
+    width: 350px;
+    height: 380px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    overflow: auto;
+}
+.list-country {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+.item-country {
+    height: 44px;
+    padding: 10px;
+    cursor: pointer;
+    &:hover {
+        background-color: #888;
+    }
+}
+
+.country-select-option-flag {
+    
+}
+.country-select-option-name {
+    padding: 0 10px;
+}
+.country-select-option-code {
+    
+}
