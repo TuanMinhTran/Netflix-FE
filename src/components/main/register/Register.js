@@ -28,28 +28,37 @@ function Register() {
     const handleChangeOption = (e)=>{
         setOptionPayment(e.target.value)
     }
+
     const handleChaneUser = (e)=>{
         setUser((prevUser=>({...prevUser,[e.target.name]:e.target.value}))
             )
     }
 
-
-    const handleSubmitRegister = (event)=>{
+    const handleSubmitRegister = async (event)=>{
         event.preventDefault();
 
         const validationErrors = validateForm(user);
         setErrors(validationErrors);
+        
         if (Object.keys(validationErrors).length === 0) {
-        sendDataToApi()
-        navigate('/register/step2')
+            const isSuccess = await sendDataToApi();
+            if (isSuccess) {
+                navigate('/register/step2');
+            }
         }
     };
+
     const sendDataToApi = async () => {
     try {
-      await axios.post('https://65788648f08799dc80458521.mockapi.io/api/v1/users', user);
-
+      await axios.post("http://localhost:8080/api/users/register", user);
+        return true;
     } catch (error) {
-      console.error('Error submitting data:', error);
+        if (error.response && error.response.status === 409) {
+            setErrors({email: 'Tài khoản với email này đã tồn tại.'});
+        } else {
+            console.error('Error submitting data:', error);
+        }
+        return false;
     }
   };
 
@@ -57,14 +66,14 @@ function Register() {
     const validateForm = (data)=>{
         let errors = {}
         if (!data.email.trim()) {
-        errors.email = 'Email không được để trống';
+            errors.email = 'Email không được để trống';
         } else if (!isValidEmail(data.email)) {
-        errors.email = 'Vui lòng nhập đúng định dạng email';
+            errors.email = 'Vui lòng nhập đúng định dạng email';
         }
         if (!data.password.trim()) {
-        errors.password = 'Mật khẩu không được để trống';
-        } else if (data.password.length < 6) {
-        errors.password = 'Mật khẩu phải dài hơn 6 ký tự';
+            errors.password = 'Mật khẩu không được để trống';
+        } else if (data.password.length < 8) {
+            errors.password = 'Mật khẩu phải dài hơn 8 ký tự';
         }
          return errors;
     }
