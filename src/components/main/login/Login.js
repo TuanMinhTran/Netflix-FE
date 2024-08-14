@@ -51,8 +51,8 @@ function Login() {
         }
         if (!data.password.trim()) {
         errors.password = 'Mật khẩu không được để trống';
-        } else if (data.password.length < 6) {
-        errors.password = 'Mật khẩu phải dài hơn 6 ký tự';
+        } else if (data.password.length < 8) {
+        errors.password = 'Mật khẩu phải dài hơn 8 ký tự';
         }
          return errors;
     }
