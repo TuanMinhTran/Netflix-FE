@@ -5,13 +5,11 @@ import PlayButton from "./PlayButton";
 
 import useBillboard from "../../../hooks/useBillboard";
 import useStoreInfoModal from "../../../hooks/useStoreInfoModal";
-import useScroll from "../../../hooks/useScroll";
 import Loading from "./Loading";
 
 const Billboard = () => {
   const { openModal } = useStoreInfoModal();
   const { data, error, isLoading } = useBillboard();
-  const mutedOff = useScroll(800);
 
   const handleOpenModal = useCallback(() => {
     if (data && data.id) {
@@ -34,9 +32,9 @@ const Billboard = () => {
           poster={data.thumbnailUrl}
           className="w-full h-[40vw] object-cover brightness-[60%] transition duration-500"
           autoPlay
-          muted={mutedOff ? "muted" : ""}
+          muted={true}
           loop
-          src={data.videoUrl}
+          src={data.movieUrl}
         ></video>
         <div className="absolute top-[30%] md:top-[40%] ml-4 md:ml-16">
           <p className="text-white text-1xl md:text-5xl h-full w-[50%] lg:text-6xl font-bold drop-shadow-xl">

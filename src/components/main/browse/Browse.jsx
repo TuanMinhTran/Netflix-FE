@@ -34,7 +34,7 @@ const Browse = React.memo(() => {
         <Navbar />
         <Billboard />
         <div className="pb-40 h-full">
-          <MovieList title="Movies" data={movies} />
+          <MovieList title="Danh Sách Phim" data={movies} />
         </div>
         <BrowseFooter />
       </div>

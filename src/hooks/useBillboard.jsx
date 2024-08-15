@@ -10,10 +10,10 @@ const useBillboard = () => {
 
   
   useEffect(() => {
-    const random = Math.floor(Math.random() * 4);
+    const random = Math.floor(Math.random() * 12);
     const fetchData = async () => {
       try {
-        const response = await axios.get(MOVIES_API_URL + "videos");
+        const response = await axios.get(MOVIES_API_URL + "movies");
         setData(response.data[random]);
       } catch (error) {
         setError("Error fetching data");
