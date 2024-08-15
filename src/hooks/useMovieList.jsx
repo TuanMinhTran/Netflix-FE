@@ -11,8 +11,7 @@ const useMovies = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(MOVIES_API_URL + "videos"
-        );
+        const response = await axios.get(MOVIES_API_URL + "movies");
         setData(response.data);
       } catch (error) {
         setError("Error fetching data");

@@ -37,7 +37,7 @@ const Watch = () => {
           <video
             className={`h-full w-full absolute top-0 left-0 object-cover`}
             autoPlay
-            src={data?.videoUrl}
+            src={data?.movieUrl}
           ></video>
         </div>
       </div>

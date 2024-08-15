@@ -11,7 +11,7 @@ const useMovie = (id) => {
         const fetchData = async () => {
             try {
                 const response = await axios.get(
-                    id ? MOVIES_API_URL + "videos/" + id : null
+                    id ? MOVIES_API_URL + "movies/" + id : null
                 );
                 setData(response.data);
             } catch (err) {

@@ -32,6 +32,7 @@ const PROFILE = {
 
 const TOP_OFFSET = 66;
 
-const MOVIES_API_URL = "https://cg-netflix-back-end.onrender.com/api/v1/";
+// const MOVIES_API_URL = "https://cg-netflix-back-end.onrender.com/api/v1/";
+const MOVIES_API_URL = "http://localhost:8080/api/";
 
 export { LOGO, HEADTITLE, TOP_OFFSET, PROFILE, MOVIES_API_URL };
