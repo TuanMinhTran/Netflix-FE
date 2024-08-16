@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { ArrowLeftIcon } from "@heroicons/react/24/outline";
 import { useNavigate, useParams } from "react-router-dom";
 import useMovie from "../../../hooks/useMovie";
@@ -37,6 +37,8 @@ const Watch = () => {
           <video
             className={`h-full w-full absolute top-0 left-0 object-cover`}
             autoPlay
+            muted = {false}
+            controls
             src={data?.movieUrl}
           ></video>
         </div>
