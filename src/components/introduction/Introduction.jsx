@@ -11,7 +11,6 @@ function Introduction() {
       <section className="banner">
         <Navbar />
 
-
         <div className="header-content">
           <h1>
             Chương trình truyền hình, phim không giới hạn và nhiều nội dung khác
@@ -100,7 +99,7 @@ function Introduction() {
           </li>
           <li>
             <input type="radio" name="accordion" id="second" />
-            <label className="accordion-menu" for="second">
+            <label className="accordion-menu" htmlFor="second">
               Tôi phải trả bao nhiêu tiền để xem Netflix??
             </label>
             <div className="content">
@@ -114,7 +113,7 @@ function Introduction() {
           </li>
           <li>
             <input type="radio" name="accordion" id="third" />
-            <label className="accordion-menu" for="third">
+            <label className="accordion-menu" htmlFor="third">
               Tôi có thể xem ở đâu?
             </label>
             <div className="content">
@@ -130,7 +129,7 @@ function Introduction() {
           </li>
           <li>
             <input type="radio" name="accordion" id="fourth" />
-            <label className="accordion-menu" for="fourth">
+            <label className="accordion-menu" htmlFor="fourth">
               Làm thế nào để hủy?
             </label>
             <div className="content">
@@ -144,7 +143,7 @@ function Introduction() {
           </li>
           <li>
             <input type="radio" name="accordion" id="fifth" />
-            <label className="accordion-menu" for="fifth">
+            <label className="accordion-menu" htmlFor="fifth">
               Tôi có thể xem gì trên Netflix?
             </label>
             <div className="content">
@@ -158,7 +157,7 @@ function Introduction() {
           </li>
           <li>
             <input type="radio" name="accordion" id="sixth" />
-            <label className="accordion-menu" for="sixth">
+            <label className="accordion-menu" htmlFor="sixth">
               Netflix có phù hợp cho trẻ em không?
             </label>
             <div className="content">
