@@ -1,16 +1,18 @@
 import classNames from "classnames/bind";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-
 import { logo } from "../../../assets/images";
 import styles from "./Login.module.scss";
 import { useState } from "react";
 import axios from "axios";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const cx = classNames.bind(styles);
 
 function Login() {
   const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
 
   const LIST_LINK = [
     { to: "/", title: "Câu hỏi thường gặp" },
@@ -33,25 +35,24 @@ function Login() {
     setErrors(validationErrors);
 
     if (Object.keys(validationErrors).length === 0) {
-        const isSuccess = await sendDataToApi();
-            if (isSuccess) {
-                 navigate("/browse");
-            }
-
+      const isSuccess = await sendDataToApi();
+      if (isSuccess) {
+        navigate("/browse");
+      }
     }
   };
 
   const sendDataToApi = async () => {
     try {
-        const response = await axios.post("http://localhost:8080/api/users/signin", user);
-        return response.status === 200;
+      const response = await axios.post("http://localhost:8080/api/users/signin", user);
+      return response.status === 200;
     } catch (error) {
-        console.error('Error submitting data:', error);
-        return false;
+      console.error("Error submitting data:", error);
+      return false;
     }
-};
+  };
 
-  const handleChaneUser = (e) => {
+  const handleChangeUser = (e) => {
     setUser((prevUser) => ({ ...prevUser, [e.target.name]: e.target.value }));
   };
 
@@ -71,7 +72,6 @@ function Login() {
   };
 
   const isValidEmail = (email) => {
-    // Use a regex or any other validation logic for email format
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   };
 
@@ -85,14 +85,15 @@ function Login() {
           <div className={cx("login-container")}>
             <div className={cx("login-form-container")}>
               <h1 className={cx("login-title")}>Đăng nhập</h1>
-              <form className={cx("login-form")}>
+              <form className={cx("login-form")} onSubmit={handleSubmitLogin}>
                 <div className={cx("input-container")}>
                   <input
                     type="text"
                     name="email"
                     className={cx("input")}
-                    value={user.name}
-                    onChange={handleChaneUser}
+                    value={user.email}
+                    onChange={handleChangeUser}
+                    placeholder=""
                   />
                   <label className={cx("label")}>
                     Email hoặc số điện thoại
@@ -104,13 +105,19 @@ function Login() {
 
                 <div className={cx("input-container")}>
                   <input
-                    type="password"
+                    type={showPassword ? "text" : "password"}
                     name="password"
                     value={user.password}
                     className={cx("input")}
-                    onChange={handleChaneUser}
+                    onChange={handleChangeUser}
+                    placeholder=""
                   />
                   <label className={cx("label")}>Mật khẩu</label>
+                  <FontAwesomeIcon
+                    icon={showPassword ? faEyeSlash : faEye}
+                    onClick={() => setShowPassword(!showPassword)}
+                    className={cx("password-toggle-icon")}
+                  />
                 </div>
                 {errors.password && (
                   <p className={cx("noti-err")}>{errors.password}</p>

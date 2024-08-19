@@ -119,7 +119,13 @@
             transform: translateY(-100%);
             font-size: 14px;
         }
-            
+    }
+    .password-toggle-icon {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
     }
 }
 
