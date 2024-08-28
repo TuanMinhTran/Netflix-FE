@@ -56,7 +56,10 @@ function Register() {
 
   const sendDataToApi = async () => {
     try {
-      await axios.post("http://localhost:8080/api/users/register", user);
+      const response = await axios.post("http://localhost:8080/api/users/register", user);
+      console.log("API Response:", response.data);
+      const { id, email } = response.data;
+      setUser({ id, email });
       return true;
     } catch (error) {
       if (error.response && error.response.status === 409) {
@@ -80,6 +83,32 @@ function Register() {
 
     fetchPackages();
   }, []);
+
+  const handleSelectPackage = async () => {
+    const packageId = packages.find(
+      (pack) => `plandChoice${pack.id}` === optionPayment
+    )?.id;
+
+    if (!user.id) {
+      console.error("User ID is not defined.");
+      return;
+    }
+
+    console.log("Selected Package ID:", packageId);
+    console.log("User ID:", user.id);
+
+    if (packageId) {
+      try {
+        await axios.post("http://localhost:8080/api/select", {
+          userId: user.id,
+          packageId,
+        });
+        navigate("/register/paymentPicker");
+      } catch (error) {
+        console.error("Failed to select package:", error);
+      }
+    }
+  };
 
   const validateForm = (data) => {
     let errors = {};
@@ -279,6 +308,7 @@ function Register() {
                 </li>
               </ul>
             </div>
+            <div className={cx("notify")}>(*)Vui lòng chọn gói phù hợp với bạn!</div>
             <div className={cx("plandGrid")}>
               <div className={cx("plandGrid-header")}>
                 <div className={cx("plandGrid-selector")}>
@@ -403,10 +433,7 @@ function Register() {
                 </small>
               </div>
             </div>
-            <button
-              className={cx("btn")}
-              onClick={() => navigate("/register/paymentPicker")}
-            >
+            <button className={cx("btn")} onClick={handleSelectPackage}>
               Tiếp theo
             </button>
           </div>
