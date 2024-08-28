@@ -152,6 +152,13 @@
     text-align: left;
 }
 
+.notify {
+    text-align: center;
+    color: #e50914;
+    font-size: 18px;
+    font-weight: 700;
+}
+
 .plandGrid {
     padding-top: 32px;
 }
@@ -262,4 +269,12 @@
     font-weight: 500;
     flex: 1 1 auto;
     text-align: center;
+    width: 15%;
+}
+
+.plandGrid-cell div {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: center;
 }

@@ -32,6 +32,7 @@ const Billboard = () => {
           poster={data.thumbnailUrl}
           className="w-full h-[40vw] object-cover brightness-[60%] transition duration-500"
           autoPlay
+          muted={true}
           loop
           src={data.movieUrl}
         ></video>
