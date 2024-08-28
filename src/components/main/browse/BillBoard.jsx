@@ -33,7 +33,7 @@ const Billboard = () => {
           className="w-full h-[40vw] object-cover brightness-[60%] transition duration-500"
           autoPlay
           loop
-          src={data.videoUrl}
+          src={data.movieUrl}
         ></video>
         <div className="absolute top-[30%] md:top-[40%] ml-4 md:ml-16">
           <p className="text-white text-1xl md:text-5xl h-full w-[50%] lg:text-6xl font-bold drop-shadow-xl">
