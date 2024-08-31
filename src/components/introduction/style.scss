@@ -102,6 +102,11 @@ nav {
   }
 }
 
+.error-message {
+  color: $main-color;
+  font-size: 14px;
+}
+
 /*-----------Features-------------------*/
 .features {
   @include bw-original;
@@ -196,11 +201,17 @@ input[type="radio"] {
   transform: rotate(135deg);
 }
 .footer-content {
+  text-align: center;
+
   h4 {
     font-size: 20px;
     font-weight: 400;
     margin-bottom: 10px;
     text-align: center;
+  }
+  div {
+    margin-top: -50px;
+    margin-bottom: 30px;
   }
   .email-signup {
     display: flex;
@@ -214,7 +225,7 @@ input[type="radio"] {
       background: $transeffect;
       border-radius: $bd-radius;
       padding: 10px 20px;
-      border: 1px solid 0.5px;
+      border: 1px solid $text-color;
       margin-left: 20px;
     }
     button {

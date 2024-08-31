@@ -14,11 +14,14 @@ import {
   faPencil,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
+import TextComponent from "../../setting/profiles/textComponent";
 
 const AccountMenu = ({ visible }) => {
   if (!visible) {
     return null;
   }
+
+  const email = localStorage.getItem("userEmail");
 
   const itemsAccount = [
     {
@@ -65,16 +68,20 @@ const AccountMenu = ({ visible }) => {
   return (
     <div className="bg-[#000000a2] w-56 absolute top-14 right-0 py-5 flex-col border-2 border-gray-800 flex">
       <div className="flex flex-col gap-3 text-xs font-semibold">
-        {itemsAccount.map((item, index) => (
-          <div key={index} className="px-3 flex gap-3 items-center">
-            <img
-              className="w-8 h-8 object-cover rounded"
-              src={item.icon}
-              alt={item.title}
-            />
-            <div className="text-white hover:underline">{item.title}</div>
-          </div>
-        ))}
+        {/* {itemsAccount.map((item, index) => ( */}
+        <div className="px-3 flex gap-3 items-center">
+          <img
+            className="w-8 h-8 object-cover rounded"
+            // src={item.icon}
+            // alt={item.title}
+          />
+          {email && (
+            <div className="text-white hover:underline">
+              <TextComponent text={email} />
+            </div>
+          )}
+        </div>
+        {/* ))} */}
         {items.map((item, index) => (
           <div key={index} className="px-3 flex gap-3 items-center">
             <FontAwesomeIcon
