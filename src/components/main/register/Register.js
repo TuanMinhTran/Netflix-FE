@@ -56,7 +56,10 @@ function Register() {
 
   const sendDataToApi = async () => {
     try {
-      const response = await axios.post("http://localhost:8080/api/users/register", user);
+      const response = await axios.post(
+        "http://localhost:8080/api/users/register",
+        user
+      );
       console.log("API Response:", response.data);
       const { id, email } = response.data;
       setUser({ id, email });
@@ -308,7 +311,9 @@ function Register() {
                 </li>
               </ul>
             </div>
-            <div className={cx("notify")}>(*)Vui lòng chọn gói phù hợp với bạn!</div>
+            <div className={cx("notify")}>
+              (*)Vui lòng chọn gói phù hợp với bạn!
+            </div>
             <div className={cx("plandGrid")}>
               <div className={cx("plandGrid-header")}>
                 <div className={cx("plandGrid-selector")}>
