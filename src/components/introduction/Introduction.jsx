@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Emailpart from "./Emailpart";
 import Navbar from "./Navbar";
 import "./style.scss";
 
 function Introduction() {
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleError = (errors) => {
+    setErrorMessage(errors.email || "Có lỗi xảy ra!");
+  };
+
   return (
     <>
       {/* Banner */}
@@ -20,7 +26,8 @@ function Introduction() {
             Bạn đã sẵn sàng xem chưa? Nhập email để tạo hoặc kích hoạt lại tư
             cách thành viên của bạn.
           </h4>
-          <Emailpart />
+          <Emailpart onError={handleError} />
+          {errorMessage && <div className="error-message">{errorMessage}</div>}
         </div>
       </section>
       {/* Features */}
@@ -175,7 +182,8 @@ function Introduction() {
             Bạn đã sẵn sàng xem chưa? Nhập email để tạo hoặc kích hoạt lại tư
             cách thành viên của bạn.
           </h4>
-          <Emailpart />
+          <Emailpart onError={handleError} />
+          {errorMessage && <div className="error-message">{errorMessage}</div>}
         </small>
       </section>
       {/* Footer */}

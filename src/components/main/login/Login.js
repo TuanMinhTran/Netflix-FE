@@ -31,12 +31,12 @@ function Login() {
     event.preventDefault();
 
     const validationErrors = validateForm(user);
-
     setErrors(validationErrors);
 
     if (Object.keys(validationErrors).length === 0) {
       const isSuccess = await sendDataToApi();
       if (isSuccess) {
+        localStorage.setItem('userEmail', user.email)
         navigate("/browse");
       }
     }
@@ -44,10 +44,19 @@ function Login() {
 
   const sendDataToApi = async () => {
     try {
-      const response = await axios.post("http://localhost:8080/api/users/signin", user);
+      const response = await axios.post(
+        "http://localhost:8080/api/users/signin",
+        user
+      );
       return response.status === 200;
     } catch (error) {
-      console.error("Error submitting data:", error);
+      if (error.response && error.response.status === 401) {
+        setErrors({ password: "Mật khẩu không đúng." });
+      } else if (error.response && error.response.status === 404) {
+        setErrors({ email: "Email không tồn tại." });
+      } else {
+        console.error("Error submitting data:", error);
+      }
       return false;
     }
   };
