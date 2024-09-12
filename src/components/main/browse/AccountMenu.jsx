@@ -77,7 +77,7 @@ const AccountMenu = ({ visible }) => {
           />
           {email && (
             <div className="text-white hover:underline">
-              <TextComponent text={email} />
+              <TextComponent text={email} maxLength={15}/>
             </div>
           )}
         </div>

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
-const TextComponent = ({ text }) => {
-  const maxLength = 12;
+const TextComponent = ({ text, maxLength}) => {
   const [displayText, setDisplayText] = useState(text);
 
   if (text.length > maxLength) {
