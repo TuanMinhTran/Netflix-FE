@@ -1,8 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 
-import { HEADTITLE } from "../constants/constant";
-
 import Login from "../components/main/login/Login";
 import Register from "../components/main/register/Register";
 import Browse from "../components/main/browse/Browse";
@@ -13,21 +11,23 @@ import Restrictions from "../components/setting/profiles/restricion/restrictions
 import Watch from "../components/main/watch/Watch";
 import ContactUs from "../components/contactus/ContactUs";
 import Admin from "../components/admin/Admin";
+import useCategories from "../hooks/useCategory";
 
 const AppRoutes = () => {
+  const { data: categories = []} = useCategories();
   return (
     <Routes>
       <Route path="/" element={<Introduction />} />
 
-      {HEADTITLE.slice(0, 3).map((item, index) => {
+      {categories.map((item, index) => {
         return <Route path={item.path} key={index} element={<Browse />} />;
       })}
 
-      {HEADTITLE.slice(3).map((item, index) => {
+      {/* {categories.slice(3).map((item, index) => {
         return (
           <Route path={item.path} key={index} element={<OriginalAudio />} />
         );
-      })}
+      })} */}
 
       <Route path="/watch/:movieId" element={<Watch />} />
 

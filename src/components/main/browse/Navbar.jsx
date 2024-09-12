@@ -5,22 +5,19 @@ import {
   ChevronDownIcon,
 } from "@heroicons/react/24/outline";
 
-import {
-  LOGO,
-  HEADTITLE,
-  TOP_OFFSET,
-  PROFILE,
-} from "../../../constants/constant";
+import { LOGO, TOP_OFFSET, PROFILE } from "../../../constants/constant";
 import NavbarItem from "./NavbarItem";
 import MobileMenu from "../mobile/MobileMenu";
 import AccountMenu from "./AccountMenu";
 
 import useScroll from "../../../hooks/useScroll";
+import useCategories from "../../../hooks/useCategory";
 
-const Navbar = () => {
+const Navbar = ({ onItemClick }) => {
   const [showAccountMenu, setShowAccountMenu] = useState(false);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const { data: categories = [] } = useCategories();
 
   const showBackground = useScroll(TOP_OFFSET);
 
@@ -41,11 +38,17 @@ const Navbar = () => {
         >
           {LOGO.src}
           <div className="flex-row ml-8 gap-7 hidden lg:flex">
-            {HEADTITLE.map((item, index) => {
-              return (
-                <NavbarItem label={item.title} key={index} src={item.path} />
-              );
-            })}
+            {categories.map((category) => (
+              <NavbarItem
+                label={category.name}
+                key={category.id}
+                src={category.path}
+                onClick={() => {
+                  // console.log("Clicked category:", category.id);
+                  onItemClick(category.id);
+                }}
+              />
+            ))}
           </div>
           <div
             onClick={toggleMobileMenu}
