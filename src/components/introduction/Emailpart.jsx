@@ -4,21 +4,15 @@ import { useState } from "react";
 import "./style.scss";
 
 import useUsers from "../../hooks/useUsers";
+import axios from "axios";
 
-function Emailpart() {
+function Emailpart({ onError }) {
   const [email, setEmail] = useState("");
+  const [errors, setErrors] = useState({});
+
   const navigate = useNavigate();
 
   const { data } = useUsers();
-
-  const checkEmail = () => {
-    var isIncluded = data.some((e) => e.email === email);
-    if (isIncluded) {
-      navigate("/login");
-    } else {
-      navigate("/register");
-    }
-  };
 
   const handleEmailChange = (event) => {
     let value = event.target.value;
@@ -29,26 +23,56 @@ function Emailpart() {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   };
 
-  const handleButtonPress = (event) => {
+  const handleButtonPress = async (event) => {
     event.preventDefault();
-    console.log(email);
 
-    if (isValidEmail(email)) {
-      setEmail(email);
-      checkEmail();
+    const validationErrors = validateForm({ email });
+    setErrors(validationErrors);
+
+    if (Object.keys(validationErrors).length === 0 && isValidEmail(email)) {
+      try {
+        const response = await axios.get(
+          `http://localhost:8080/api/users/check-email?check-email=${email}`
+        );
+        if (response.data === "exists") {
+          navigate("/login");
+        } else {
+          navigate("/register");
+        }
+      } catch (error) {
+        console.error("Error checking Email: ", error);
+      }
     } else {
-      console.log("Email không hợp lệ!");
+      onError(validationErrors);
     }
+  };
+
+  const validateForm = (data) => {
+    let errors = {};
+    if (typeof data !== "object" || data === null) {
+      errors.email = "Dữ liệu không hợp lệ";
+      return errors;
+    }
+
+    if (typeof data.email !== "string") {
+      errors.email = "Email không hợp lệ";
+      return errors;
+    }
+    if (!data.email.trim()) {
+      errors.email = "Vui lòng nhập Email của bạn.";
+    } else if (!isValidEmail(data.email)) {
+      errors.email = "Vui lòng nhập đúng định dạng Email.";
+    }
+    return errors;
   };
 
   return (
     <form onSubmit={handleButtonPress} className="email-signup">
       <input
-        type="email"
+        type="text"
         placeholder="Địa chỉ email"
-        value={email || ""}
+        value={email}
         onChange={handleEmailChange}
-        required
       />
 
       <button type="submit">Bắt đầu</button>

@@ -17,7 +17,7 @@ export default function AccountManage() {
               <Link to={data.url}>
                 <img src={data.img} alt={data.username} />
                 <span>
-                  <TextComponent text={data.username} />
+                  <TextComponent text={data.username} maxLength={12}/>
                 </span>
               </Link>
             </li>

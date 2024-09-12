@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChevronLeft,
@@ -7,8 +7,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import {
   AVATAR_EDIT,
-  CLASSIC,
-  IMG_TITLE_1,
+  // CLASSIC,
+  // IMG_TITLE_1,
 } from "../../../../assets/images/settings/constantImg";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -16,12 +16,15 @@ import "slick-carousel/slick/slick-theme.css";
 import "../../scss/avatarEdit.scss";
 import ConfirmChangeAvt from "./confirmChangeAvt";
 import EditProfile from "../profilesManage/editProfile";
+import axios from "axios";
+import { useCarouselHandler } from "../../../../hooks/useCarouselHandler";
 
 export default function AvatarEdit() {
-  const [slider1, setSlider1] = useState(false);
-  const [slider2, setSlider2] = useState(false);
-  const [slider3, setSlider3] = useState(false);
+  const { sliderRef, slider, handlePrev, handleNext } = useCarouselHandler();
   const [componentProfile, setComponentProfile] = useState("");
+  const [titles, setTitles] = useState([]);
+
+  const email = localStorage.getItem("userEmail");
 
   const changeProfile = (type) => {
     setComponentProfile(type);
@@ -34,51 +37,29 @@ export default function AvatarEdit() {
     currentComponent = <ConfirmChangeAvt />;
   }
 
-  const sliderRef = useRef([]);
-
   const settings = {
     draggable: true,
     initialSlide: 0,
     speed: 500,
     slidesToShow: 8,
-    slidesToScroll: 4,
+    slidesToScroll: 8,
+    infinite: true,
   };
 
-  const handleNext1 = (carouselIdx) => {
-    if (sliderRef.current[carouselIdx]) {
-      sliderRef.current[carouselIdx].slickNext();
-
-      if (slider1 === false) {
-        setSlider1(true);
+  useEffect(() => {
+    const fetchAvatars = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:8080/api/titles/avatars"
+        );
+        setTitles(response.data);
+      } catch (error) {
+        console.error("Error fetching avatars:", error);
       }
-    }
-  };
+    };
 
-  const handleNext2 = (carouselIdx) => {
-    if (sliderRef.current[carouselIdx]) {
-      sliderRef.current[carouselIdx].slickNext();
-
-      if (slider2 === false) {
-        setSlider2(true);
-      }
-    }
-  };
-
-  const handleNext3 = (carouselIdx) => {
-    if (sliderRef.current[carouselIdx]) {
-      sliderRef.current[carouselIdx].slickNext();
-
-      if (slider3 === false) {
-        setSlider3(true);
-      }
-    }
-  };
-
-  const handlePrev = (carouselIdx) => {
-    if (sliderRef.current[carouselIdx]) {
-      sliderRef.current[carouselIdx].slickPrev();
-    }
-  };
+    fetchAvatars();
+  }, []);
 
   return (
     <>
@@ -101,7 +82,7 @@ export default function AvatarEdit() {
             </div>
             <div className="avatar">
               <div className="username">
-                <h2>User Name</h2>
+                <h2>{email}</h2>
               </div>
               <div className="avatar-username">
                 <img src={AVATAR_EDIT.src} alt={AVATAR_EDIT.alt} />
@@ -111,129 +92,51 @@ export default function AvatarEdit() {
           <div className="wrapper-list-avatars">
             <div className="box-avatar-container">
               <ul className="list-avatars-themed">
-                <li className="detail-list-avatars-themed">
-                  <h2>Kinh điển</h2>
-                  <div className="list-slider-avatars">
-                    {slider1 ? (
-                      <span
-                        id="icon-left-pre"
-                        className="icon-left handle-slide"
-                        onClick={() => handlePrev(0)}
-                      >
-                        <FontAwesomeIcon icon={faChevronLeft} />
-                      </span>
-                    ) : null}
-                    {/* slide */}
-                    <div className="slider-avatarsEdit">
-                      <div className="slider-img-avatars">
-                        <Slider
-                          ref={(el) => (sliderRef.current[0] = el)}
-                          {...settings}
+                {titles.map((title, index) => (
+                  <li key={title.id} className="detail-list-avatars-themed">
+                    <h2>{title.titleAvatar}</h2>
+                    <div className="list-slider-avatars">
+                      {slider ? (
+                        <span
+                          id="icon-left-pre"
+                          className="icon-left handle-slide"
+                          onClick={() => handlePrev(index)}
                         >
-                          {CLASSIC.map((data) => (
-                            <div
-                              className="slide-item"
-                              onClick={() => changeProfile("goToConfirmAvatar")}
-                            >
-                              <div className="slide-pick">
-                                <img src={data.src} alt={data.alt} />
+                          <FontAwesomeIcon icon={faChevronLeft} />
+                        </span>
+                      ) : null}
+                      <div className="slider-avatarsEdit">
+                        <div className="slider-img-avatars">
+                          <Slider
+                            ref={(el) => (sliderRef.current[index] = el)}
+                            {...settings}
+                          >
+                            {title.avatars.map((avatar) => (
+                              <div
+                                key={avatar.id}
+                                className="slide-item"
+                                onClick={() =>
+                                  changeProfile("goToConfirmAvatar")
+                                }
+                              >
+                                <div className="slide-pick">
+                                  <img src={avatar.avatarUrl} alt="Avatar" />
+                                </div>
                               </div>
-                            </div>
-                          ))}
-                        </Slider>
+                            ))}
+                          </Slider>
+                        </div>
                       </div>
-                    </div>
-                    <span
-                      id="icon-left-next"
-                      className="icon-right handle-slide icon-next"
-                      onClick={() => handleNext1(0)}
-                    >
-                      <FontAwesomeIcon icon={faChevronRight} />
-                    </span>
-                  </div>
-                </li>
-                <li className="detail-list-avatars-themed">
-                  <h2>
-                    <img src={IMG_TITLE_1.src} alt={IMG_TITLE_1.alt} />
-                  </h2>
-                  <div className="list-slider-avatars">
-                    {slider2 ? (
                       <span
-                        className="icon-left handle-slide"
-                        onClick={() => handlePrev(1)}
+                        id="icon-left-next"
+                        className="icon-right handle-slide icon-next"
+                        onClick={() => handleNext(index)}
                       >
-                        <FontAwesomeIcon icon={faChevronLeft} />
+                        <FontAwesomeIcon icon={faChevronRight} />
                       </span>
-                    ) : null}
-                    {/* slide */}
-                    <div className="slider-avatarsEdit">
-                      <div className="slider-img-avatars">
-                        <Slider
-                          ref={(el) => (sliderRef.current[1] = el)}
-                          {...settings}
-                        >
-                          {CLASSIC.map((data) => (
-                            <div
-                              className="slide-item"
-                              onClick={() => changeProfile("goToConfirmAvatar")}
-                            >
-                              <div className="slide-pick">
-                                <img src={data.src} alt={data.alt} />
-                              </div>
-                            </div>
-                          ))}
-                        </Slider>
-                      </div>
                     </div>
-                    <span
-                      className="icon-right handle-slide"
-                      onClick={() => handleNext2(1)}
-                    >
-                      <FontAwesomeIcon icon={faChevronRight} />
-                    </span>
-                  </div>
-                </li>
-                <li className="detail-list-avatars-themed">
-                  <h2>
-                    <img src={IMG_TITLE_1.src} alt={IMG_TITLE_1.alt} />
-                  </h2>
-                  <div className="list-slider-avatars">
-                    {slider3 ? (
-                      <span
-                        className="icon-left handle-slide"
-                        onClick={() => handlePrev(2)}
-                      >
-                        <FontAwesomeIcon icon={faChevronLeft} />
-                      </span>
-                    ) : null}
-                    {/* slide */}
-                    <div className="slider-avatarsEdit">
-                      <div className="slider-img-avatars">
-                        <Slider
-                          ref={(el) => (sliderRef.current[2] = el)}
-                          {...settings}
-                        >
-                          {CLASSIC.map((data) => (
-                            <div
-                              className="slide-item"
-                              onClick={() => changeProfile("goToConfirmAvatar")}
-                            >
-                              <div className="slide-pick">
-                                <img src={data.src} alt={data.alt} />
-                              </div>
-                            </div>
-                          ))}
-                        </Slider>
-                      </div>
-                    </div>
-                    <span
-                      className="icon-right handle-slide"
-                      onClick={() => handleNext3(2)}
-                    >
-                      <FontAwesomeIcon icon={faChevronRight} />
-                    </span>
-                  </div>
-                </li>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
